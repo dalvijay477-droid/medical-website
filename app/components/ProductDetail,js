@@ -1,0 +1,79 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+export default function ProductDetail({ product }) {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      style={{
+        maxWidth: "1200px",
+        margin: "auto",
+        padding: "60px 20px",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "50px",
+      }}
+    >
+      {/* IMAGE */}
+      <div>
+        <img
+          src={product.image}
+          alt={product.name}
+          style={{
+            width: "100%",
+            borderRadius: "14px",
+            boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
+          }}
+        />
+      </div>
+
+      {/* CONTENT */}
+      <div>
+        <span
+          style={{
+            color: "#38bdf8",
+            fontSize: "0.9rem",
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+          }}
+        >
+          {product.category}
+        </span>
+
+        <h1 style={{ fontSize: "2.4rem", margin: "12px 0" }}>
+          {product.name}
+        </h1>
+
+        <p style={{ color: "#9ca3af", lineHeight: "1.7" }}>
+          {product.description}
+        </p>
+
+        <ul style={{ marginTop: "20px", paddingLeft: "18px" }}>
+          {product.features.map((feature, i) => (
+            <li key={i} style={{ marginBottom: "10px" }}>
+              ✔ {feature}
+            </li>
+          ))}
+        </ul>
+
+        <button
+          style={{
+            marginTop: "30px",
+            background: "#22c55e",
+            color: "#052e16",
+            padding: "14px 28px",
+            borderRadius: "8px",
+            border: "none",
+            fontWeight: "600",
+            cursor: "pointer",
+          }}
+        >
+          Request a Quote
+        </button>
+      </div>
+    </motion.section>
+  );
+}
