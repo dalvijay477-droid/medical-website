@@ -1,76 +1,93 @@
-"use client";
+import { products } from "../../data/products";
 
-import { useParams } from "next/navigation";
-import { products } from "@/data/products";
-import { useState } from "react";
+export default function ProductDetail({ params }) {
+  const product = products.find((p) => p.slug === params.slug);
 
-export default function ProductDetail() {
-  const { slug } = useParams();
-  const product = products.find((p) => p.slug === slug);
-
-  const [added, setAdded] = useState(false);
-
-  if (!product) return <h2 style={{ color: "white" }}>Product not found</h2>;
-
-  const handleAddToCart = () => {
-    setAdded(true);
-  };
+  if (!product) {
+    return <div style={{ padding: "100px", color: "white" }}>Product Not Found</div>;
+  }
 
   return (
     <div
       style={{
-        padding: "100px 20px",
-        maxWidth: "900px",
-        margin: "auto",
+        padding: "120px 20px",
+        background: "#0f172a",
         color: "white",
+        minHeight: "100vh",
       }}
     >
-      <img
-        src={product.image}
-        style={{ width: "100%", borderRadius: "12px" }}
-      />
-
-      <h1 style={{ marginTop: "20px" }}>{product.name}</h1>
-
-      <h2 style={{ color: "#38bdf8" }}>{product.price}</h2>
-
-      <p style={{ marginTop: "10px", color: "#cbd5f5" }}>
-        {product.description}
-      </p>
-
-      {/* BUTTONS */}
-      <div style={{ marginTop: "20px", display: "flex", gap: "15px" }}>
-        
-        {/* Buy on WhatsApp */}
-        <a
-          href={`https://wa.me/918600791618?text=I want to buy ${product.name}`}
-          target="_blank"
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "50px",
+        }}
+      >
+        {/* IMAGE */}
+        <img
+          src={product.image}
+          alt={product.name}
           style={{
-            background: "#25D366",
-            padding: "12px 18px",
-            borderRadius: "8px",
-            color: "white",
-            textDecoration: "none",
+            width: "100%",
+            borderRadius: "16px",
           }}
-        >
-          Buy on WhatsApp
-        </a>
+        />
 
-        {/* Add to Cart */}
-        <button
-          onClick={handleAddToCart}
-          style={{
-            background: "#6366f1",
-            padding: "12px 18px",
-            borderRadius: "8px",
-            border: "none",
-            color: "white",
-            cursor: "pointer",
-          }}
-        >
-          {added ? "Added ✅" : "Add to Cart"}
-        </button>
+        {/* DETAILS */}
+        <div>
+          <h1
+            style={{
+              fontSize: "2.5rem",
+              color: "#38bdf8",
+              marginBottom: "20px",
+            }}
+          >
+            {product.name}
+          </h1>
+
+          <p style={{ color: "#cbd5e1", lineHeight: "1.7" }}>
+            {product.description}
+          </p>
+
+          <ul style={{ marginTop: "20px", color: "#e2e8f0" }}>
+            {product.features.map((feature, index) => (
+              <li key={index} style={{ marginBottom: "8px" }}>
+                ✔ {feature}
+              </li>
+            ))}
+          </ul>
+
+          {/* CONTACT BUTTONS */}
+          <div style={{ marginTop: "30px", display: "flex", gap: "15px" }}>
+            <a
+              href="tel:+919999999999"
+              style={buttonStyle}
+            >
+              📞 Call Now
+            </a>
+
+            <a
+              href={`https://wa.me/919999999999?text=Hello, I am interested in ${product.name}`}
+              target="_blank"
+              style={buttonStyle}
+            >
+              💬 WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
+const buttonStyle = {
+  padding: "12px 20px",
+  background: "#38bdf8",
+  color: "#0f172a",
+  textDecoration: "none",
+  borderRadius: "8px",
+  fontWeight: "600",
+  transition: "0.3s",
+};
