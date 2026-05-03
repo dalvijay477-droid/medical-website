@@ -7,7 +7,7 @@ export const products = [
     description: "High-quality ICU bed with adjustable features.",
   },
   {
-    slug: "OT Lights",
+    slug: "operation-table",
     name: "OT Lights",
     image: "/products/ot-lights.jpg",
     price: "₹75,000",
