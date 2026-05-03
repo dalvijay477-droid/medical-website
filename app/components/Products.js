@@ -7,7 +7,7 @@ export default function Products() {
     <section
       id="products"
       style={{
-        padding: "80px 20px",
+        padding: "60px 10px",
         background: "#0f172a",
         color: "white",
       }}
@@ -15,7 +15,7 @@ export default function Products() {
       <h2
         style={{
           textAlign: "center",
-          fontSize: "clamp(1.5rem, 4vw, 2rem)", // ✅ responsive
+          fontSize: "clamp(1.3rem, 4vw, 1.8rem)",
           fontWeight: "700",
           color: "#38bdf8",
         }}
@@ -25,17 +25,15 @@ export default function Products() {
 
       <div
         style={{
-          marginTop: "50px",
-          maxWidth: "1200px",
-          width: "100%",
-          padding: "0 10px",
+          marginTop: "35px",
+          maxWidth: "1000px",
           marginInline: "auto",
           display: "grid",
 
-          // ✅ THIS IS THE MAIN FIX
-          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+          // 🔥 EVEN SMALLER CARDS
+          gridTemplateColumns: "repeat(auto-fit, minmax(85px, 1fr))",
 
-          gap: "16px",
+          gap: "10px",
         }}
       >
         {products.map((product, index) => (
@@ -47,46 +45,49 @@ export default function Products() {
             <div
               style={{
                 background: "#1e293b",
-                padding: "10px",
-                borderRadius: "12px",
-                transition: "0.3s",
+                padding: "5px", // smaller card
+                borderRadius: "8px",
+                transition: "0.2s",
                 cursor: "pointer",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-5px)";
+                e.currentTarget.style.transform = "translateY(-3px)";
                 e.currentTarget.style.boxShadow =
-                  "0 10px 25px rgba(56,189,248,0.3)";
+                  "0 6px 14px rgba(56,189,248,0.2)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              <div
-                style={{
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                  overflow: "hidden",
-                  borderRadius: "10px",
-                }}
-              >
+              {/* IMAGE */}
+                <div
+                  style={{
+                    width: "100%",
+                    aspectRatio: "1 / 1",
+                    overflow: "hidden",      // ✅ important
+                    borderRadius: "6px",
+                  }}
+                >
                 <img
                   src={product.image}
                   alt={product.name}
                   style={{
-                    width: "100%",
+                    width: "100%",   // even smaller image
                     height: "100%",
                     objectFit: "cover",
                   }}
                 />
               </div>
 
+              {/* NAME */}
               <h3
                 style={{
-                  marginTop: "10px",
-                  fontSize: "clamp(0.75rem, 2vw, 0.9rem)", // ✅ responsive
+                  marginTop: "4px",
+                  fontSize: "clamp(0.65rem, 2vw, 0.8rem)",
                   textAlign: "center",
                   color: "#e2e8f0",
+                  lineHeight: "1.1",
                 }}
               >
                 {product.name}
