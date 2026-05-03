@@ -8,8 +8,8 @@ export const products = [
   },
   {
     slug: "operation-table",
-    name: "Operation Table",
-    image: "/products/ot-table.jpg",
+    name: "OT Lights",
+    image: "/products/ot-lights.jpg",
     price: "₹75,000",
     description: "Advanced OT table for surgical procedures.",
   },
