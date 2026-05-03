@@ -37,10 +37,13 @@ export default function Navbar() {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "space-between", 
           alignItems: "center",
+          flexWrap: "wrap",          // ✅ mobile fix
+          gap: "15px",              // ✅ spacing fix
           maxWidth: "1300px",
           margin: "0 auto",
+          padding: "0 10px",        // ✅ prevent overflow
         }}
       >
         {/* LOGO */}

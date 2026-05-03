@@ -15,7 +15,7 @@ export default function Products() {
       <h2
         style={{
           textAlign: "center",
-          fontSize: "2rem",
+          fontSize: "clamp(1.5rem, 4vw, 2rem)", // ✅ responsive
           fontWeight: "700",
           color: "#38bdf8",
         }}
@@ -27,10 +27,15 @@ export default function Products() {
         style={{
           marginTop: "50px",
           maxWidth: "1200px",
+          width: "100%",
+          padding: "0 10px",
           marginInline: "auto",
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: "20px",
+
+          // ✅ THIS IS THE MAIN FIX
+          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+
+          gap: "16px",
         }}
       >
         {products.map((product, index) => (
@@ -42,7 +47,7 @@ export default function Products() {
             <div
               style={{
                 background: "#1e293b",
-                padding: "12px",
+                padding: "10px",
                 borderRadius: "12px",
                 transition: "0.3s",
                 cursor: "pointer",
@@ -79,7 +84,7 @@ export default function Products() {
               <h3
                 style={{
                   marginTop: "10px",
-                  fontSize: "0.9rem",
+                  fontSize: "clamp(0.75rem, 2vw, 0.9rem)", // ✅ responsive
                   textAlign: "center",
                   color: "#e2e8f0",
                 }}
