@@ -1,6 +1,6 @@
 "use client";
 
-import { products } from "../data/products";
+import { products } from "../../data/products";
 
 export default function Products() {
   return (

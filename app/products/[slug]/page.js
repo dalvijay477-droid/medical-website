@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import { products } from "../../../data/products"; // ✅ FIXED PATH
+import { products } from "../../../data/products";
 
 export default function ProductDetail() {
   const { slug } = useParams();
