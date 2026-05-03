@@ -52,7 +52,8 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "12px",
+            gap: "15px",
+            flexWrap: "wrap",
             textDecoration: "none",
           }}
         >
